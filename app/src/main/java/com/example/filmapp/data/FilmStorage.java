@@ -1,6 +1,7 @@
 package com.example.filmapp.data;
 
-import com.example.filmapp.Models.FilmModel;
+import com.example.filmapp.data.models.FilmModel;
+import com.example.filmapp.data.retrofit.RetrofitBuilder;
 
 import retrofit2.Call;
 import retrofit2.Callback;

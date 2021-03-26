@@ -5,13 +5,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.view.View;
 
-import com.example.filmapp.Models.FilmAdapter;
-import com.example.filmapp.Models.FilmModel;
+import com.example.filmapp.databinding.ActivityMainBinding;
+import com.example.filmapp.data.models.FilmAdapter;
+import com.example.filmapp.data.models.FilmModel;
 import com.example.filmapp.R;
-import com.example.filmapp.data.FilmStorage;
-import com.example.filmapp.data.RetrofitBuilder;
+import com.example.filmapp.data.retrofit.RetrofitBuilder;
 
 import java.util.List;
 
@@ -21,11 +21,14 @@ import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements FilmAdapter.OnClickListener {
     private FilmAdapter adapter;
+    private ActivityMainBinding binding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
         init();
         load();
     }
@@ -49,10 +52,15 @@ public class MainActivity extends AppCompatActivity implements FilmAdapter.OnCli
     }
 
     private void init() {
-        RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        adapter = new FilmAdapter();
-        recyclerView.setAdapter(adapter);
+        adapter = new FilmAdapter(this);
+        binding.recyclerView.setAdapter(adapter);
         adapter.setClickListener(this);
+        binding.btnFavoriteList.setOnClickListener(v -> openFavorite());
+    }
+
+    private void openFavorite() {
+        Intent intent = new Intent(this, FavoriteFilmActivity.class);
+        startActivity(intent);
     }
 
 

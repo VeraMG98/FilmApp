@@ -1,11 +1,18 @@
-package com.example.filmapp.Models;
+package com.example.filmapp.data.models;
+
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 import java.util.List;
 
+@Entity
 public class FilmModel implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    private int idDB;
+
     @SerializedName("id")
     private String id;
 
@@ -27,23 +34,13 @@ public class FilmModel implements Serializable {
     @SerializedName("rt_score")
     private String rtScore;
 
-    @SerializedName("people")
-    private List<String> people = null;
+    public int getIdDB() {
+        return idDB;
+    }
 
-    @SerializedName("species")
-    private List<String> species = null;
-
-    @SerializedName("locations")
-    private List<String> locations = null;
-
-    @SerializedName("vehicles")
-    private List<String> vehicles = null;
-
-    @SerializedName("url")
-    private String url;
-
-    @SerializedName("length")
-    private Object length;
+    public void setIdDB(int idDB) {
+        this.idDB = idDB;
+    }
 
     public String getId() {
         return id;
@@ -101,51 +98,17 @@ public class FilmModel implements Serializable {
         this.rtScore = rtScore;
     }
 
-    public List<String> getPeople() {
-        return people;
-    }
-
-    public void setPeople(List<String> people) {
-        this.people = people;
-    }
-
-    public List<String> getSpecies() {
-        return species;
-    }
-
-    public void setSpecies(List<String> species) {
-        this.species = species;
-    }
-
-    public List<String> getLocations() {
-        return locations;
-    }
-
-    public void setLocations(List<String> locations) {
-        this.locations = locations;
-    }
-
-    public List<String> getVehicles() {
-        return vehicles;
-    }
-
-    public void setVehicles(List<String> vehicles) {
-        this.vehicles = vehicles;
-    }
-
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
-    public Object getLength() {
-        return length;
-    }
-
-    public void setLength(Object length) {
-        this.length = length;
+    @Override
+    public String toString() {
+        return "FilmModel{" +
+                "idDB=" + idDB +
+                ", id='" + id + '\'' +
+                ", title='" + title + '\'' +
+                ", description='" + description + '\'' +
+                ", director='" + director + '\'' +
+                ", producer='" + producer + '\'' +
+                ", releaseDate='" + releaseDate + '\'' +
+                ", rtScore='" + rtScore + '\'' +
+                '}';
     }
 }

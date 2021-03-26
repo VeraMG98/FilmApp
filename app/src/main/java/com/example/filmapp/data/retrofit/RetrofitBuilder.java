@@ -1,4 +1,4 @@
-package com.example.filmapp.data;
+package com.example.filmapp.data.retrofit;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

@@ -1,15 +1,14 @@
 package com.example.filmapp.ui;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 
-import com.example.filmapp.Models.FilmModel;
-import com.example.filmapp.R;
-import com.example.filmapp.data.RetrofitBuilder;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.filmapp.data.retrofit.RetrofitBuilder;
 import com.example.filmapp.databinding.ActivityFilmBinding;
+import com.example.filmapp.data.models.FilmModel;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,7 +17,6 @@ import retrofit2.Response;
 public class FilmActivity extends AppCompatActivity {
 
     private ActivityFilmBinding binding;
-    private String id;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,12 +24,12 @@ public class FilmActivity extends AppCompatActivity {
         binding = ActivityFilmBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
-        if (getIntent() != null)
-            id = getIntent().getStringExtra("ID");
-        load();
+        if (getIntent() != null) {
+            load(getIntent().getStringExtra("ID"));
+        }
     }
 
-    private void load() {
+    private void load(String id) {
         RetrofitBuilder.getInstance().getFilmById(id).enqueue(new Callback<FilmModel>() {
             @Override
             public void onResponse(Call<FilmModel> call, Response<FilmModel> response) {

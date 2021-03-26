@@ -1,6 +1,6 @@
-package com.example.filmapp.data;
+package com.example.filmapp.data.retrofit;
 
-import com.example.filmapp.Models.FilmModel;
+import com.example.filmapp.data.models.FilmModel;
 
 import java.util.List;
 
