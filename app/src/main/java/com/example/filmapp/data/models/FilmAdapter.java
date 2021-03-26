@@ -75,7 +75,6 @@ public class FilmAdapter extends RecyclerView.Adapter<FilmAdapter.FilmHolder> {
         }
 
         private void addFilmFovarite(FilmModel filmModel) {
-            imageView.setImageResource(R.drawable.ic_baseline_favorite_24);
             if (App.getAppDataBase().filmDao().getById(filmModel.getId()))
                 Toast.makeText(context, "Уже сохранено", Toast.LENGTH_SHORT).show();
             else {

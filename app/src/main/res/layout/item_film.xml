@@ -38,7 +38,7 @@
 
             <ImageView
                 android:id="@+id/btn_add_favorite"
-                android:src="@drawable/ic_baseline_favorite_border_24"
+                android:src="@drawable/ic_baseline_favorite_24"
                 android:layout_width="0dp"
                 android:layout_weight="1"
                 android:layout_height="wrap_content"
